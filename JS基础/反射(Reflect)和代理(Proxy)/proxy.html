@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div contenteditable="true">123</div>
+    <script>
+      let target = {
+        name: 'target',
+        value: 42
+      };
+
+      let proxy = new Proxy(target, {
+        deleteProperty(trapTarget, key) {
+          // 拦截delete操作符，不允许删除value属性
+          if (key === 'value') {
+            return false;
+          } else {
+            return Reflect.deleteProperty(trapTarget, key);
+          }
+        }
+      });
+
+      // 尝试删除 proxy.value
+      console.log('value' in proxy); // true
+      let result1 = delete proxy.value;
+      console.log(result1); // false
+      console.log('value' in proxy); // true
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <div contenteditable="true">123</div>
+  <style>
+    .box1 {
+      background: none;
+      margin-top: 10px;
+      margin-left: 200px;
+      height: 100px;
+      width: 100px;
+      border: 1px solid #000;
+    }
+
+    .box2 {
+      position: relative;
+      margin: 10px 0 0 200px;
+      border: none;
+      background: none;
+      height: 100px;
+      width: 100px;
+    }
+
+    .box2::after {
+      content: '';
+      position: absolute;
+      border: 1px solid #000;
+      top: 0;
+      left: 0;
+      box-sizing: border-box;
+      width: 200%;
+      height: 200%;
+      transform: scale(1);
+      transform-origin: left top;
+    }
+  </style>
+  <div class="box"></div>
+  <div class="box1"></div>
+  <div class='box2'></div>
+  <script type="module">
+
+
+
+
+  </script>
+</body>
+
+</html>
