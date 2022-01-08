@@ -13,13 +13,19 @@ TypeScript 是 JavaScript 的一个超集，支持 ECMAScript 6 标准
 ![ts类型](./assets/ts类型.png)
 
 
+
+
+
+
+
+
+
 ### unknown 和 any
 
 - 两个都是TS的顶级类型
-
-- any类型将`跳过类型检查`
+- any类型将 `跳过类型检查`
 - unknown类型是any类型的安全版本。每当你想用any时，试着先用unknown
-- `任何类型的数据`都可以赋给 `unknown` 类型
+- `任何类型的数据` 都可以赋给 `unknown` 类型
 ```ts
 let value: unknown;
 
@@ -36,7 +42,7 @@ value = Symbol("type"); // OK
 ```
 
 
-- `unkown` 类型的值`只能`赋给 `any 或 unkown`本身
+- `unkown` 类型的值 `只能` 赋给 `any 或 unkown` 本身
 
 ```ts
 let value: unknown;

@@ -25,6 +25,7 @@ var threeSum = function (nums) {
       const sum = nums[i] + nums[j] + nums[k];
       if (sum < 0) {
         j = moveRight(nums, j);
+        
       } else if (sum > 0) {
         k = moveLeft(nums, k);
       } else {

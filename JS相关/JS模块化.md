@@ -287,13 +287,13 @@ UMD的出现
 主要应用的框架 sea.js
 
 ```js
-  define('module', (require, exports, module) => {
-    let $ = require('jquery');
-    // jquery相关逻辑
+define('module', (require, exports, module) => {
+  let $ = require('jquery');
+  // jquery相关逻辑
 
-    let dependencyModule1 = require('./dependecyModule1');
-    // dependencyModule1相关逻辑
-  })
+  let dependencyModule1 = require('./dependecyModule1');
+  // dependencyModule1相关逻辑
+})
 ```
 > * 优点：按需加载，依赖就近
 * 依赖于打包，加载逻辑存在于每个模块中，扩大模块体积

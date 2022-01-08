@@ -19,5 +19,23 @@
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
 var merge = function(nums1, m, nums2, n) {
+  let cur = m + n - 1;
+  let poi1 = m - 1;
+  let poi2 = n - 1;
+  while(poi1 >= 0 && poi2 >= 0) {
 
+    if (nums1[poi1] > nums2[poi2]) {
+      nums1[cur] = nums1[poi1]
+      poi1--;
+    } else {
+      nums1[cur] = nums2[poi2]
+      poi2--;
+    }
+  }
+  while (poi2 >= 0) {
+    nums1[poi2] = nums2[poi2];
+    poi2--;
+  }
 };
+
+
