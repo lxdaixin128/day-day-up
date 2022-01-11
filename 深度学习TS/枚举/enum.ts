@@ -23,17 +23,16 @@ console.log(NumEnum3.one) // => 21
 console.log(NumEnum3.two) // => 22
 
 
-enum NumEnum {
-    one = 'the one',
-    two = 'the one',
-    // three,
+enum NumEnumStr {
+  one = 'the one',
+  two = 'the two',
+  one1 = 'the two',
+  two1 = 'the one',
 }
 
+console.log(NumEnumStr.one, NumEnumStr.two)
 
+// 赋值字符串后 比较的目标将是字符串
+console.log(NumEnumStr.one > NumEnumStr.two) // false
 
-// enum NumEnum2 {
-//   one = 10,
-//   two,
-//   three = 20,
-//   four
-// }
+console.log(NumEnumStr.one1 > NumEnumStr.two1) // true

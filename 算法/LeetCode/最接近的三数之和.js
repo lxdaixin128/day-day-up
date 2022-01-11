@@ -12,7 +12,7 @@
 
 
 
-const quickSort = require('./经典排序算法/快速排序.js')
+const quickSort = require('../经典排序算法/快速排序.js')
 var threeSumClosest = function (nums, target) {
   const len = nums.length;
   quickSort(nums, 0, len);

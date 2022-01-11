@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    .old {
+      width: 100px;
+      height: 100px;
+      background: lightblue;
+      margin: 100px;
+    }
+
+    .improve {
+      overflow: hidden;
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background: lightblue;
+      margin: 100px;
+    }
+  </style>
+</head>
+<body>
+  <!-- overflow: hidden 会触发BFC -->
+  <!-- 外边距折叠 -->
+  <div style="overflow: hidden;display: flex;"> 
+    <div class="old">外边距折叠</div>
+    <div class="old">外边距折叠</div>
+  </div>
+
+
+  <!-- 改进: 将子元素嵌套进BFC中 -->
+  <div style="overflow: hidden;">
+    <div class="improve">
+      <p>改进</p>
+    </div>
+    <div class="improve">
+      <p>改进</p>
+    </div>
+  </div>
+  
+</body>
+</html>
