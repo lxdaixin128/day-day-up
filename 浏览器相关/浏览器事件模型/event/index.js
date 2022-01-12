@@ -8,12 +8,13 @@ const son = document.getElementById("son");
 // })
 
 window.addEventListener("click", function (e) {
+    e.stopPropagation();
     // e.target.nodeName 指当前点击的元素, e.currentTarget.nodeName绑定监听事件的元素
     console.log("window 捕获", e.target.nodeName, e.currentTarget.nodeName);
 }, true);
 
 parent.addEventListener("click", function (e) {
-    e.stopPropagation();
+    
 
     // e.target.nodeName 指当前点击的元素, e.currentTarget.nodeName绑定监听事件的元素
     console.log("parent 捕获", e.target.nodeName, e.currentTarget.nodeName);

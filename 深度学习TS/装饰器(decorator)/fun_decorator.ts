@@ -32,7 +32,3 @@ a.greet() // 你好, greet方法被重写
 const keys = Object.keys(a) 
 console.log(keys) // ['name'], greet方法不可枚举
 
-
-
-
-
