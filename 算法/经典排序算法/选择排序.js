@@ -1,3 +1,9 @@
+/* 
+ * 思想: 循环将后半段中的最小数交换至前半段的最后一个数(minIndex)
+ * 时间复杂度； 
+ */
+
+
 function selectionSort(arr) {
   const len = arr.length;
   let minIndex = 0;

@@ -1,3 +1,10 @@
+/* 
+ * 思想: 依次将遍历到的数交换至数组前半段的有序数组中
+ */
+
+
+
+
 function insertionSort(arr) {
   const len = arr.length;
   for (let i = 0; i < len - 1; i++) {
