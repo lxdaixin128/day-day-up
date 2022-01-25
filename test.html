@@ -8,15 +8,13 @@
 <body>
   <div contenteditable="true">123</div>
   <script>
-    function User(name) {
-      this.name = name;
-    }
+    let x = 17
+
+    x &= 5
+
+    console.log(x)
     
-    console.log(User, User.prototype)
 
-    const user = new User('jack')
-
-    console.log(user.__proto__.constructor)
   </script>
 </body>
 

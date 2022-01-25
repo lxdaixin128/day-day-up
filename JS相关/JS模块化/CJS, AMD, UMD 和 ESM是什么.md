@@ -42,7 +42,7 @@ define("模块名", ["依赖的模块名"], callback）
 }(this, function ($, _) {
   // this is where I defined my module implementation
 
-  var Requester = { // ... };
+  var Requester = {  };
 
   return Requester;
 }));

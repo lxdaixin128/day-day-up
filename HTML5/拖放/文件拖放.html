@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>文件拖放</title>
+  <style type="text/css">
+    #frame {
+      width: 520px;
+      min-height: 120px;
+      padding: 10px;
+      border: 1px solid #aaaaaa;
+    }
+  </style>
+  <script>
+
+    function dragenter(event) {
+      console.log('dragenter', event);
+    }
+
+    function dragover(event) {
+      event.preventDefault();
+    }
+
+    function dragleave(event) {
+      console.log('dragleave', event);
+    }
+
+    function drop(event) {
+      event.preventDefault();
+      Array.prototype.forEach.call(event.dataTransfer.files, file => {
+        const nameEl = document.createElement('p');
+        nameEl.innerText = file.name;
+        event.target.appendChild(nameEl);
+      })
+    }
+  </script>
+</head>
+
+<body>
+  <div id="frame" ondrop="drop(event)" ondragover="dragover(event)" ondragenter="dragenter(event)" ondragleave="dragleave(event)"></div>
+</body>
+
+</html>
