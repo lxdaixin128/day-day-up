@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-</head>
+  <body>
+    <div contenteditable="true">123</div>
+    <script>
+      // 简单对象
+      // const Course = {
+      //   teacher: '云隐',
+      //   leader: '小可',
+      //   startCourse: function (name) {
+      //     return `开始${name}课`;
+      //   },
+      // };
 
-<body>
-  <div contenteditable="true">123</div>
-  <script>
-    let x = 17
+      // 函数对象
+      function Course() {
+        this.teacher = '云隐';
+        this.leader = '小可';
+        this.startCourse = function (name) {
+          console.log(this);
+          return `开始${name}课`;
+        };
 
-    x &= 5
+        console.log(this);
+      }
 
-    console.log(x)
-    
-
-  </script>
-</body>
-
+      Course();
+    </script>
+  </body>
 </html>
