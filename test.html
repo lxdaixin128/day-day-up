@@ -7,28 +7,68 @@
   <body>
     <div contenteditable="true">123</div>
     <script>
-      // 简单对象
-      // const Course = {
-      //   teacher: '云隐',
-      //   leader: '小可',
-      //   startCourse: function (name) {
-      //     return `开始${name}课`;
-      //   },
-      // };
-
-      // 函数对象
-      function Course() {
-        this.teacher = '云隐';
-        this.leader = '小可';
-        this.startCourse = function (name) {
-          console.log(this);
-          return `开始${name}课`;
-        };
-
-        console.log(this);
+      // 说明：
+      function asyncFunc1(param) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(param + 1);
+          }, 1000);
+        });
       }
 
-      Course();
+      function asyncFunc2(param) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(param + 1);
+          }, 1000);
+        });
+      }
+
+      function asyncFunc3(param) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(param + 1);
+          }, 1000);
+        });
+      }
+
+      const pipeline = [asyncFunc1, asyncFunc2, asyncFunc3];
+
+      function* generator(data) {
+        let param = data;
+
+        for (let i = 0; i < pipeline.length; i++) {
+          param = yield pipeline[i](param);
+          console.log('pos:', 3);
+        }
+      }
+
+      function asyncAll(param) {
+        return new Promise((resolve) => {
+          const iterator = generator(param); // 接下来要执行next
+          console.log('pos:', 0);
+          // data为第一次执行之后的返回结果，用于传给第二次执行
+          const next = async (data) => {
+            const { value: promise, done } = iterator.next(data); // 第二次执行，并接收第一次的请求结果 value 和 done
+            console.log('pos:', 1);
+            if (done) {
+              // 执行完毕
+              resolve(param);
+            } else {
+              // 第一次执行next时，yield返回的 promise实例 赋值给了 value
+              param = await promise;
+              console.log('param', param);
+              console.log('pos:', 2);
+              next(param); // 当第一次value 执行完毕且成功时，执行下一步(并把第一次的结果传递下一步)
+            }
+          };
+          next();
+        });
+      }
+
+      asyncAll(0).then((result) => {
+        console.log('result', result);
+      });
     </script>
   </body>
 </html>

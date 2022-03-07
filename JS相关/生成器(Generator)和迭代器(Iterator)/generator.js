@@ -1,7 +1,5 @@
-
-
 function* generator() {
-  const list = [1, 2, 3]
+  const list = [1, 2, 3];
 
   for (let i of list) {
     yield i;
@@ -14,16 +12,14 @@ console.log(g.next());
 console.log(g.next());
 console.log(g.next());
 
-
-function* sendParameter(){
-  console.log("start");
+function* sendParameter() {
+  console.log('start');
   var x = yield '2';
-  console.log("one:" + x);
+  console.log('one:' + x);
   var y = yield '3';
-  console.log("two:" + y);
-  console.log("total:" + (x + y));
+  console.log('two:' + y);
+  console.log('total:' + (x + y));
 }
-
 
 var sendp2 = sendParameter();
 sendp2.next(10);
