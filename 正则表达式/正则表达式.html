@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div id="test"></div>
+    <script>
+      const reg = /[1-9]+/;
+
+      const str = '123xxxx5454fdsfa676';
+      // const res = reg.exec(str);
+
+      const res = str.matchAll(reg);
+
+      console.log('res', res);
+    </script>
+  </body>
+</html>

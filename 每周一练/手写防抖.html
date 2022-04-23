@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <style>
+    #test {
+      height: 150px;
+      line-height: 150px;
+      text-align: center;
+      color: #fff;
+      background-color: #ccc;
+      font-size: 80px;
+    }
+  </style>
+  <body>
+    <div id="test"></div>
+    <script>
+      // 延迟执行
+      function debounce(func, wait) {
+        let timeout;
+        return function () {
+          let context = this;
+          let args = arguments;
+          if (timeout) clearTimeout(timeout);
+          timeout = setTimeout(() => {
+            func.apply(context, args);
+          }, wait);
+        };
+      }
+
+      // 立即执行
+      function debounce1(func, wait) {
+        let timeout;
+        return function () {
+          let context = this;
+          let args = arguments;
+
+          if (timeout) clearTimeout(timeout);
+
+          let callNow = !timeout;
+          timeout = setTimeout(() => {
+            timeout = null;
+          }, wait);
+
+          if (callNow) func.apply(context, args);
+        };
+      }
+
+      const testEl = document.getElementById('test');
+
+      let num = 0;
+
+      testEl.onmousemove = debounce((e) => {
+        num++;
+        testEl.innerText = num;
+      }, 200);
+    </script>
+  </body>
+</html>
