@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script>
+      const iifeModule = ((dependencyModule1, dependencyModule2) => {
+        let count = 0;
+        return {
+          increase: () => ++count,
+          reset: () => {
+            count = 0;
+          },
+          log: () => {
+            console.log(count);
+          },
+        };
+      })();
+
+      iifeModule.increase();
+      iifeModule.reset();
+      iifeModule.increase();
+      iifeModule.increase();
+      iifeModule.log();
+    </script>
+  </body>
+</html>

@@ -44,15 +44,23 @@ promise.then(onFulfilled, onRejected);
 
 2. onFulfilled 特性
 
-   2.1 promise 变成 fulfilled 时, 应该调用 onFulfilled, 参数是 value 2.2 promise 在变成 fulfilled 之前, 不应该被调用 2.3 只能被调用一次
+   2.1 promise 变成 fulfilled 时, 应该调用 onFulfilled, 参数是 value
+
+   2.2 promise 在变成 fulfilled 之前, 不应该被调用
+
+   2.3 只能被调用一次
 
 3. onRejected
 
-   3.1 promise 变成 rejected 时, 应该调用 onRejected, 参数是 reason 3.2 promise 在变成 rejected 之前, 不应该被调用 3.3 只能被调用一次
+   3.1 promise 变成 rejected 时, 应该调用 onRejected, 参数是 reason
+
+   3.2 promise 在变成 rejected 之前, 不应该被调用
+
+   3.3 只能被调用一次
 
 4. onFulfilled 和 onRejected 执行环境应该是微任务里
 
-queueMicrotask()
+   queueMicrotask()
 
 5. then 方法可以被调用多次(或链式调用)
 
@@ -68,7 +76,9 @@ promise.then(cb1, cb2);
 [onFulfilled1, onFulFilled2, onFulFilled3][(onRejected1, onRejected2, onRejected3)];
 ```
 
-5.1 promise 状态变成`fulfilled`后, 所有的 onFulfilled 回调都需要按照 then 的顺序执行 5.2 promise 状态变成`rejected`后, 所有的 onRejected 回调都需要按照 then 的顺序执行
+5.1 promise 状态变成`fulfilled`后, 所有的 onFulfilled 回调都需要按照 then 的顺序执行
+
+5.2 promise 状态变成`rejected`后, 所有的 onRejected 回调都需要按照 then 的顺序执行
 
 6. then 的返回值
 
@@ -80,7 +90,13 @@ const promise1 = new Promise();
 const promise2 = promise1.then(onFulfilled, onRejected);
 ```
 
-6.1 onFulfilled 或者 onRejected 执行结果为 x, 调用 resolvePromise() 6.2 onFulfilled 或者 onRejected 执行时候报错了, promise2 就需要被 reject, 且后续全部的 then 都会被 reject 6.3 onFulfilled 不是一个函数, 使用一个默认的函数做代替(做一个透传) 6.4 onRejected 不是一个函数, 使用一个默认的函数做代替(做一个透传)
+6.1 onFulfilled 或者 onRejected 执行结果为 x, 调用 resolvePromise()
+
+6.2 onFulfilled 或者 onRejected 执行时候报错了, promise2 就需要被 reject, 且后续全部的 then 都会被 reject
+
+6.3 onFulfilled 不是一个函数, 使用一个默认的函数做代替(做一个透传)
+
+6.4 onRejected 不是一个函数, 使用一个默认的函数做代替(做一个透传)
 
 7. resolvePromise
 

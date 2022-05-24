@@ -5,10 +5,6 @@
 - 2. 根据注释，补齐代码
 
 ```js
-function sum(a, b, c) {
-  console.log('sum', this);
-  return a + b + c;
-}
 // 1. 需求：手写bind => bind位置（挂在那里） => Function.prototype
 Function.prototype.newBind = function () {
   // 2. bind是什么?

@@ -5,6 +5,47 @@
   </head>
   <body>
     <div id="test"></div>
-    <script></script>
+    <script>
+      Function.prototype.newApply = function (newThis) {
+        newThis ||= window;
+        const args = arguments[1];
+
+        newThis.fn = this;
+
+        const res = args ? newThis.fn(...args) : newThis.fn();
+
+        delete newThis.fn;
+
+        return res;
+      };
+
+      Function.prototype.newBind = function () {
+        const context = this;
+        const args = Array.from(arguments);
+
+        const newThis = args.shift();
+
+        return function () {
+          return context.newApply(context, args);
+        };
+      };
+
+      const obj = {
+        name: '张三',
+        run: function (info) {
+          console.log(this.name + 'run', info);
+        },
+      };
+
+      const obj2 = {
+        name: '李四',
+        run: function (info) {
+          console.log(this.name + 'run', info);
+        }.newBind(obj),
+      };
+
+      obj.run('没跌倒');
+      obj2.run('跌倒了');
+    </script>
   </body>
 </html>

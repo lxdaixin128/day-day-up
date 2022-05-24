@@ -20,11 +20,10 @@
       function debounce(func, wait) {
         let timeout;
         return function () {
-          let context = this;
-          let args = arguments;
           if (timeout) clearTimeout(timeout);
+
           timeout = setTimeout(() => {
-            func.apply(context, args);
+            func.apply(this, arguments);
           }, wait);
         };
       }
@@ -33,17 +32,13 @@
       function debounce1(func, wait) {
         let timeout;
         return function () {
-          let context = this;
-          let args = arguments;
-
+          const callNow = !timeout;
           if (timeout) clearTimeout(timeout);
-
-          let callNow = !timeout;
           timeout = setTimeout(() => {
             timeout = null;
           }, wait);
 
-          if (callNow) func.apply(context, args);
+          if (callNow) func.apply(this, arguments);
         };
       }
 
@@ -51,7 +46,8 @@
 
       let num = 0;
 
-      testEl.onmousemove = debounce((e) => {
+      testEl.onmousemove = debounce1(function (e) {
+        console.log(this, e);
         num++;
         testEl.innerText = num;
       }, 200);

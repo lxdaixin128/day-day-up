@@ -23,7 +23,7 @@
         })
         .catch((e) => {
           console.log('错误1');
-          return '错误1';
+          return Promise.reject();
         })
         .then((e) => {
           console.log('成功1', e);
