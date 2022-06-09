@@ -23,7 +23,7 @@
           if (timeout) clearTimeout(timeout);
 
           timeout = setTimeout(() => {
-            func.apply(this, arguments);
+            func.call(this, arguments);
           }, wait);
         };
       }
@@ -38,7 +38,7 @@
             timeout = null;
           }, wait);
 
-          if (callNow) func.apply(this, arguments);
+          if (callNow) func.call(this, arguments);
         };
       }
 
@@ -46,7 +46,7 @@
 
       let num = 0;
 
-      testEl.onmousemove = debounce1(function (e) {
+      testEl.onmousemove = debounce(function (e) {
         console.log(this, e);
         num++;
         testEl.innerText = num;

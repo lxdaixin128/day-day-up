@@ -1,9 +1,6 @@
-/* 
+/*
  * 思想: 依次将遍历到的数交换至数组前半段的有序数组中
  */
-
-
-
 
 function insertionSort(arr) {
   const len = arr.length;
@@ -19,12 +16,10 @@ function insertionSort(arr) {
   return arr;
 }
 
-
-
 function swap(arr, i, j) {
   let temp = arr[i];
   arr[i] = arr[j];
   arr[j] = temp;
 }
 
-module.exports = insertionSort
+module.exports = insertionSort;

@@ -1,14 +1,14 @@
-// 通过解耦让每一个模块职责更加独立
+// 通过解耦让每一个模块职责更加独立   单依职责
 // 目标： 一个功能模块只做一件事
 
 // sprint
 // game store
 class PUBGManager {
-    openDialog() {
-        // 弹框
-        // 计算金额
-        setPrice();
-    }
+  openDialog() {
+    // 弹框
+    // 计算金额
+    setPrice();
+  }
 }
 
 const game = new PUBGManager();
@@ -19,20 +19,20 @@ game.openDialog(); // 弹框之后计算金额 弹框《 = 》计算金额 两�
 // TBD：基于功能纬度的模块解耦
 // gameManager.js - 业务
 class PUBGManager {
-    constructor(command) {
-        this.command = command;
-    }
-    openDialog(price) {
-        // 计算金额
-        this.command.setPrice(price);
-    }
+  constructor(command) {
+    this.command = command;
+  }
+  openDialog(price) {
+    // 计算金额
+    this.command.setPrice(price);
+  }
 }
 
 // optManager.js - 核心库
 class PriceManager {
-    setPrice(price) {
-        // 配置金额
-    }
+  setPrice(price) {
+    // 配置金额
+  }
 }
 
 // main.js

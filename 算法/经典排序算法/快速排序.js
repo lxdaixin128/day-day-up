@@ -1,6 +1,6 @@
 function quickSort(arr, left, right) {
   let partitionIndex;
-  
+
   if (left < right) {
     partitionIndex = partition(arr, left, right);
     quickSort(arr, left, partitionIndex - 1);
@@ -9,8 +9,11 @@ function quickSort(arr, left, right) {
   return arr;
 }
 
-function partition(arr, left, right) {     // 分区操作
-  let pivot = left, index = pivot + 1;
+// 关键函数
+function partition(arr, left, right) {
+  // 分区操作  pivot是中间值
+  let pivot = left,
+    index = pivot + 1;
   for (var i = index; i <= right; i++) {
     if (arr[i] < arr[pivot]) {
       swap(arr, i, index);
@@ -27,4 +30,4 @@ function swap(arr, i, j) {
   arr[j] = temp;
 }
 
-module.exports = quickSort
+module.exports = quickSort;
